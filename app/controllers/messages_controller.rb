@@ -1,4 +1,4 @@
-class MessagesController < ApplicationController 
+class MessagesController < ApplicationController
   def index
     @room = Room.find params[:room_id]
     @messages = @room.messages
@@ -7,6 +7,11 @@ class MessagesController < ApplicationController
       @message.user = current_user
     else
       @message.user = "Guest"
+    end
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @messages}
     end
   end
 
