@@ -1,15 +1,14 @@
-<div class="messages"><% @messages.each do |message| %>
-  <p><strong><%= message.user %>: </strong><%= message.body %></p>
-<% end %>
+<div class="messages">
+  <%= render @messages %>
 </div>
 
 
-<%= form_for [@room, @message] do |f| %>
+<%= form_for [@room, @message], remote: true do |f| %>
   <%= f.hidden_field :user, value: @message.user %>
   <%= f.text_field :body, class: "form-control" %>
   <%= f.submit "Send Message", class: "btn btn-secondary" %>
 <% end %>
 
 <script>
-setInterval(updateMessagesViaJSON, 1000);
+setInterval(updateMessagesViaJS, 2000);
 </script>

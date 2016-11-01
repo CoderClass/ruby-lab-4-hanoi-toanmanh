@@ -3,15 +3,24 @@
 
 window.updateMessagesViaJSON = function() {
   console.log("inside updateMessagesViaJSON");
-  $.getJSON("<%= room_messages_path(@room) %>", function(messages) {
+  $.getJSON(window.location.pathname+".json", function(messages) {
     // loop through the messages and render them
     // you can use $(".messages").append("blah")
     // to add blah to the <div class="messages">...</div> element
-    $(".messages").html('');
+    
+    e = $(".messages");
+    e.html('');
 
     for (i in messages){
       message = messages[i];
-      $(".messages").append("<div class='message'><strong>" + message.user + "</strong> " + message.body + "</div>");
+      e.append("<div class='message'><strong>" + message.user + "</strong> " + message.body + "</div>");
     }
+    e.animate({scrollTop: e.prop("scrollHeight")}, 500);
+
   })
+}
+
+window.updateMessagesViaJS = function() {
+  console.log("inside updateMessageViaJS");
+  $.ajax({ url: window.location.pathname, dataType: 'script' });
 }

@@ -11,19 +11,24 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.json { render json: @messages}
+      format.js
     end
   end
 
   def create
     @room = Room.find params[:room_id]
-    @message = @room.messages.create!(message_params)
-    if @message.persisted?
-      flash[:success] = "Message sent"
-    else
-      flash[:error] = "Can't send message"
+    @message = @room.messages.create! message_params
+    respond_to do |format|
+      format.html do
+        if @message.persisted?
+          redirect_to room_messages_path(@room)
+        else
+          flash[:error] = "Error: #{@message.errors.full_messages.to_sentence}"
+          redirect_to root_path
+        end
+      end
+      format.js 
     end
-    redirect_back fallback_location: room_messages_path
   end
 
   def message_params
