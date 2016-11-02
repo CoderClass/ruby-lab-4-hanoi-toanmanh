@@ -3,8 +3,9 @@ class RoomsController < ApplicationController
     @rooms = Room.all
   end
   def create
+    
+    
     @room = Room.new room_params
-
     if @room.save
       flash[:success] = "Room created   !"
       redirect_to root_path

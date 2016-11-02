@@ -2,7 +2,6 @@
   <%= render @messages %>
 </div>
 
-
 <%= form_for [@room, @message], remote: true do |f| %>
   <%= f.hidden_field :user, value: @message.user %>
   <%= f.text_field :body, class: "form-control" %>

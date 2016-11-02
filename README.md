@@ -13,11 +13,11 @@ Lab 4 : Javascripts
   * [x] Poll changes in JSON and update via AJAX
 * [x] Mileston 5:
   * [x] Poll changes with JS responses
-* [] Milestone 6:
+* [x] Milestone 6:
   * [ ] Understand Action Cable
-  * [ ] Establating Websocket Connection
-    * [ ] Message channel on server
-    * [ ] Message channel on client
+  * [x] Establating Websocket Connection
+    * [x] Message channel on server
+    * [x] Message channel on client
 * [ ] Milestone 7: Create and render messages
 * [ ] Milestone 8: Deploy on Heroku
 * [ ] Bonus 1: Implement removing a message
